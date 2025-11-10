@@ -367,7 +367,7 @@ body {
   align-items: flex-end; /* keeps text near the bottom edge */
   justify-content: center;
   background: #020617
-    url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image6.png")
+    url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image3.png")
       center/cover no-repeat;
   background-size: cover;
   background-attachment: fixed;  /* <-- this "fixes" the image to viewport */
