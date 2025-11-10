@@ -372,7 +372,7 @@ body {
   background-size: cover;
   background-attachment: fixed;  /* <-- this "fixes" the image to viewport */
   color: white;
-  height: 80vh;                  /* big panel that gets revealed as you scroll */
+  height: 100vh;                  /* big panel that gets revealed as you scroll */
   padding: 0 40px 28px;
   text-align: center;
   overflow: hidden;
