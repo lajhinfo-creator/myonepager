@@ -359,18 +359,19 @@ body {
 }
 
 /* ==============================
-   FOOTER WITH IMAGE + OVERLAY
+   FOOTER – CLEAN REVEAL WITH FIXED BACKGROUND
 ============================== */
 .footer {
   position: relative;
   display: flex;
-  align-items: flex-end; /* Hug bottom */
+  align-items: flex-end; /* keeps text near the bottom edge */
   justify-content: center;
   background: #020617
     url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image6.png")
       center/cover no-repeat;
+  background-attachment: fixed;  /* <-- this "fixes" the image to viewport */
   color: white;
-  height: 60vh; /* balanced visible area */
+  height: 60vh;                  /* big panel that gets revealed as you scroll */
   padding: 0 40px 28px;
   text-align: center;
   overflow: hidden;
@@ -379,7 +380,11 @@ body {
 .footer-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.78), transparent 55%);
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.78),
+    transparent 55%
+  );
   z-index: 1;
 }
 
@@ -387,11 +392,15 @@ body {
   position: relative;
   z-index: 2;
   max-width: 820px;
-  line-height: 1.7;
-  font-size: 13px;
+  line-height: 1.8;
+  font-size: 15px;
   color: #f3f4f6;
   margin: 0 auto;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
+
 
 /* ==============================
    DOWNLOAD BUTTON
