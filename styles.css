@@ -1,22 +1,54 @@
-
 /* ==============================
    GLOBAL STYLES
 ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  background: radial-gradient(circle at top left, #111827, #020617);
+  background: #020617;
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  height: 100vh;
+}
+
+/* ==============================
+   FIXED BACKGROUND LAYER
+============================== */
+.background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #020617 url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image6.png") center bottom/cover no-repeat;
+}
+
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.95) 70%);
+}
+
+/* ==============================
+   SCROLLING CONTENT LAYER
+============================== */
+.content-layer {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #111827, #020617);
 }
 
 /* Page container */
 .page-wrapper {
   max-width: 1020px;
-  margin: 60px auto;
+  margin: 60px auto 0;
   background: #f9fafb;
-  border-radius: 14px;
+  border-radius: 14px 14px 0 0;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
@@ -29,9 +61,7 @@ body {
   overflow: hidden;
   padding: 60px 50px 50px;
   color: #fff;
-  background: #0b1120
-    url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image1.png")
-      center/cover no-repeat;
+  background: #0b1120 url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image1.png") center/cover no-repeat;
 }
 
 /* Floating gradient circles */
@@ -64,16 +94,36 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.3; }
-  50% { transform: scale(1.1); opacity: 0.5; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* HEADER TEXT COLORS */
+/* HEADER TEXT COLORS & TAG */
+.header-tag {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
 .header h1 {
   color: #ffffff;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -91,22 +141,9 @@ body {
   z-index: 2;
 }
 
-.header .header-tag {
-  color: #a5b4fc;
-  letter-spacing: 0.1em;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-
-/* SCHWAB LOGO BUTTON */
+/* LOGO PILL */
 .logo {
   position: relative;
-  top: 0px;
-  right: 40px;
   background: rgba(15, 23, 42, 0.85);
   padding: 8px 20px;
   border-radius: 999px;
@@ -117,24 +154,21 @@ body {
   letter-spacing: 0.16em;
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(148, 163, 184, 0.6);
-  width: auto;          /* prevents full width stretch */
-  display: inline-block; /* keeps it tight to content */
-  z-index: 3;           /* stays above background, below text */
+  width: auto;
+  display: inline-block;
+  z-index: 3;
+  margin-bottom: 16px;
 }
 
-/* HEADER IMAGE OVERLAY (COLOR + TRANSPARENCY CONTROL) */
+/* HEADER IMAGE OVERLAY */
 .header-overlay {
   position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  background: rgba(15, 23, 42, 0.45); 
-  /* ↑ COLOR + OPACITY:
-     - change the rgb values for color
-     - change the 0.45 for transparency (0 = invisible, 1 = solid) */
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
   z-index: 2;
-  pointer-events: none; /* don’t block clicks */
+  pointer-events: none;
 }
 
-/* make sure header text + logo sit above the overlay */
 .header .logo,
 .header .header-tag,
 .header h1,
@@ -143,15 +177,12 @@ body {
   z-index: 3;
 }
 
-
 /* ==============================
    CONTENT LAYOUT
 ============================== */
-/* MAIN CONTENT */
-
 .main-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 24px;
   padding: 30px 34px 34px;
   background: #f3f4f6;
@@ -209,6 +240,7 @@ body {
   font-size: 18px;
   font-weight: 700;
   color: #111827;
+  margin: 0;
 }
 
 .section-body {
@@ -218,7 +250,6 @@ body {
 }
 
 /* BULLETS */
-
 .bullet-group {
   display: flex;
   flex-direction: column;
@@ -240,7 +271,6 @@ body {
 }
 
 /* QUOTE */
-
 .quote-box {
   margin-top: 12px;
   background: linear-gradient(135deg, #fffbeb, #fef3c7);
@@ -251,7 +281,7 @@ body {
 }
 
 .quote-box::before {
-  content: "“";
+  content: """;
   position: absolute;
   left: 12px;
   top: 2px;
@@ -263,10 +293,10 @@ body {
   font-size: 13px;
   line-height: 1.7;
   color: #713f12;
+  margin: 0;
 }
 
 /* ENHANCEMENTS */
-
 .enhancement-list {
   display: flex;
   flex-direction: column;
@@ -316,7 +346,6 @@ body {
 }
 
 /* IMPACT */
-
 .impact-grid {
   display: flex;
   flex-wrap: wrap;
@@ -359,61 +388,55 @@ body {
 }
 
 /* ==============================
-   FOOTER – FULL IMAGE, NO CROPPING
+   REVEAL ANIMATION
 ============================== */
-
-.footer {
-  position: relative;
-  width: 100%;
-  padding: 0;           /* no extra padding around the image */
-  background: none;     /* we are not using background-image anymore */
+.section.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Wrap that holds the image + overlay + text */
-.footer-media {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
+.section.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* The actual footer image */
-.footer-image {
-  display: block;
-  width: 100%;
-  height: auto;         /* auto height based on aspect ratio */
-  object-fit: contain;  /* show the entire image, never crop */
-}
-
-/* Gradient overlay on top of the image */
-.footer-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(15, 23, 42, 0.78),
-    transparent 55%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Outcome text sitting on top of the image, hugging the bottom */
-.footer-text {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  z-index: 2;
-  max-width: 820px;
-  padding: 0 20px;
+/* ==============================
+   OUTCOME SECTION (REVEALED AT BOTTOM)
+============================== */
+.outcome-section {
+  padding: 80px 50px 120px;
   text-align: center;
-  line-height: 1.7;
-  font-size: 14px;
-  color: #f9fafb;
+  position: relative;
 }
 
+.outcome-content {
+  max-width: 820px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 32px 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
 
+.outcome-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.outcome-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #f3f4f6;
+  margin: 0;
+}
 
 /* ==============================
    DOWNLOAD BUTTON
@@ -424,72 +447,126 @@ body {
   right: 20px;
   background: #2563eb;
   color: white;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 1000;
 }
 
 #downloadPDF:hover {
   background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* =========================================
-   PRINT STYLING – 1 PAGE, CENTERED, FULL
-========================================= */
+/* ==============================
+   PRINT STYLING (CENTERED, ONE PAGE)
+============================== */
 @media print {
-  /* Tell the browser we're printing a US Letter page with no extra margins */
   @page {
     size: letter portrait;
-    margin: 0;
+    margin: 0.25in 0.5in;
   }
 
-  html,
-  body {
-    width: 8.5in;
-    height: 11in;
-    margin: 0;
-    padding: 0;
-    background: #020617; /* dark outer background like the screen view */
+  * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Center the page-wrapper horizontally on the sheet */
-  body {
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #020617;
+    overflow: hidden;
+  }
+
+  .background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content-layer {
+    background: transparent;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start; /* start at top of the page */
+    min-height: 100vh;
   }
 
   .page-wrapper {
-    width: 8.5in;      /* match paper width */
-    margin: 0;
-    box-shadow: none;  /* no glow box in print */
-
-    /* 🔧 SCALE CONTROLS HOW MUCH OF THE PAGE WE FILL
-       - 0.86 is a good starting point for your current content
-       - If it *just* spills to a second page, lower slightly (0.84)
-       - If there’s a lot of extra white space, raise slightly (0.88)
-    */
-    transform: scale(0.86);
-    transform-origin: top center;
-  }
-
-  /* Let the footer image behave normally in print */
-  .footer,
-  .footer-media,
-  .footer-image {
     width: 100%;
-    height: auto;
+    max-width: 7.5in;
+    margin: 0 auto;
+    transform: scale(0.76);
+    transform-origin: center center;
+    page-break-inside: avoid;
+    page-break-after: avoid;
   }
 
-  /* Hide the on-screen PDF button in print */
+  .header {
+    padding: 35px 40px 30px;
+    page-break-inside: avoid;
+  }
+
+  .main-content {
+    padding: 25px 30px;
+    page-break-inside: avoid;
+  }
+
+  .outcome-section {
+    padding: 35px 40px 45px;
+    page-break-inside: avoid;
+  }
+
+  .outcome-content {
+    padding: 24px 32px;
+  }
+
   #downloadPDF {
     display: none !important;
+  }
+
+  /* Prevent orphans */
+  .section,
+  .card,
+  .enhancement,
+  .bullet {
+    page-break-inside: avoid;
+  }
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-wrapper {
+    margin: 20px;
+    border-radius: 14px;
+  }
+  
+  .header {
+    padding: 40px 30px;
+  }
+  
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .outcome-section {
+    padding: 60px 30px 100px;
   }
 }
