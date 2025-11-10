@@ -372,10 +372,10 @@ body {
   background-size: cover;
   background-attachment: fixed;  /* <-- this "fixes" the image to viewport */
   color: white;
-  height: 60vh;                  /* big panel that gets revealed as you scroll */
-  padding: 0 4px 2px;
+  height: 80vh;                  /* big panel that gets revealed as you scroll */
+  padding: 0 40px 28px;
   text-align: center;
-  overflow: cover;
+  overflow: hidden;
 }
 
 .footer-overlay {
