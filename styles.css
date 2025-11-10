@@ -369,6 +369,7 @@ body {
   background: #020617
     url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/Image6.png")
       center/cover no-repeat;
+  background-size: cover;
   background-attachment: fixed;  /* <-- this "fixes" the image to viewport */
   color: white;
   height: 60vh;                  /* big panel that gets revealed as you scroll */
