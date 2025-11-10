@@ -438,10 +438,11 @@ body {
   background: #1d4ed8;
 }
 
-/* ==============================
-   PRINT STYLING (1 PAGE)
-============================== */
+/* =========================================
+   PRINT STYLING – 1 PAGE, CENTERED, FULL
+========================================= */
 @media print {
+  /* Tell the browser we're printing a US Letter page with no extra margins */
   @page {
     size: letter portrait;
     margin: 0;
@@ -453,26 +454,41 @@ body {
     height: 11in;
     margin: 0;
     padding: 0;
+    background: #020617; /* dark outer background like the screen view */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background: #020617;
+  }
+
+  /* Center the page-wrapper horizontally on the sheet */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* start at top of the page */
   }
 
   .page-wrapper {
-    margin: 0 auto;
-    width: 8.5in;
-    transform: scale(0.88); /* ≈ your ideal scale */
+    width: 8.5in;      /* match paper width */
+    margin: 0;
+    box-shadow: none;  /* no glow box in print */
+
+    /* 🔧 SCALE CONTROLS HOW MUCH OF THE PAGE WE FILL
+       - 0.86 is a good starting point for your current content
+       - If it *just* spills to a second page, lower slightly (0.84)
+       - If there’s a lot of extra white space, raise slightly (0.88)
+    */
+    transform: scale(0.86);
     transform-origin: top center;
   }
 
-  .header {
-    padding: 40px 50px 32px;
+  /* Let the footer image behave normally in print */
+  .footer,
+  .footer-media,
+  .footer-image {
+    width: 100%;
+    height: auto;
   }
 
-  .footer {
-    height: 200px;
-  }
-
+  /* Hide the on-screen PDF button in print */
   #downloadPDF {
     display: none !important;
   }
