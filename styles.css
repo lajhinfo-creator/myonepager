@@ -29,9 +29,10 @@ body {
   padding: 60px 50px 50px;
   color: #fff;
   background: #0b1120
-    url("https://raw.githubusercontent.com/lajhinfo-creator/Schwab-learning-journey/main/image14.png")
+    url("https://raw.githubusercontent.com/lajhinfo-creator/myonepager/main/image14.png")
     center/cover no-repeat;
 }
+
 
 /* Floating gradient circles */
 .header::before {
