@@ -33,8 +33,8 @@ function handleFooterZoomParallax() {
   progress = Math.max(0, Math.min(progress, 1));
 
   // Dramatic zoom-out: 130% -> 100%
-  const startZoom = 130;
-  const endZoom = 100;
+  const startZoom = 80;
+  const endZoom = 75;
   const currentZoom = startZoom - (startZoom - endZoom) * progress;
 
   // Pan upward: 90% -> 50% (reveals full image)
@@ -68,8 +68,8 @@ function handleMobileFade() {
   // HEADER FADE: as you scroll down ~300px, tint fades out slightly
   const headerFadeRange = 300;
   let headerProgress = Math.min(Math.max(scrollY / headerFadeRange, 0), 1);
-  const headerStartOpacity = 0.7;
-  const headerEndOpacity = 0.2;
+  const headerStartOpacity = 7;
+  const headerEndOpacity = 2;
   const headerOpacity =
     headerStartOpacity - (headerStartOpacity - headerEndOpacity) * headerProgress;
   headerOverlay.style.opacity = headerOpacity.toFixed(3);
