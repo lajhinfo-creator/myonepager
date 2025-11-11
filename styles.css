@@ -395,7 +395,7 @@ body {
   background-repeat: no-repeat;
 
   /* Start slightly zoomed in and low */
-  background-size: 80% auto;       /* starting zoom (will animate down) */
+  background-size: 70% auto;       /* starting zoom (will animate down) */
   background-position: center 90%;  /* start focus a bit lower */
   background-attachment: fixed;     /* anchored feel */
 
@@ -645,11 +645,11 @@ body {
 
   /* Base overlay opacities for mobile fade */
   .header-overlay {
-    opacity: 0.7;
+    opacity: 7;
   }
 
   .footer-overlay {
-    opacity: 0.4;
+    opacity: 4;
   }
 }
 
